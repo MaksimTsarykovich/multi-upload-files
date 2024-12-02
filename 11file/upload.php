@@ -15,7 +15,7 @@ foreach ($_FILES["files"]["name"] as $key => $image) {
 
     !isImageValid($fileSize, $fileType) ? returnToHome() :
 
-    $fileName = createUnicName(2,$fileType);
+    $fileName = createUniqueName(2,$fileType);
 
     if (!saveImage($fileName, $fileTmpName, $mysqli)) {
         $_SESSION['error'] = "Ошибка при загрузки изображения";

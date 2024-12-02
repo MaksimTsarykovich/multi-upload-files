@@ -37,7 +37,7 @@ function addToDatabase($fileName, $mysqli): bool
     return mysqli_query($mysqli, $sql);
 }
 
-function createUnicName($nameLength, $fileType): string
+function createUniqueName($nameLength, $fileType): string
 {
     $randomName = "";
     for ($i = 0; $i < $nameLength; $i++) {
