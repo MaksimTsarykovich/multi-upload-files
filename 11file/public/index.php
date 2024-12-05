@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/includes/config.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once '../includes/config.php';
+require_once '../includes/functions.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -57,7 +57,7 @@ if (!$_SESSION['is_logged_in']) {
             <?php foreach (getAllImages($mysqli) as $row): ?>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                         src="/Task/11file/uploads/<?= $row['filename'] ?>" alt="">
+                         src="/Task/11file/public/uploads/<?= $row['filename'] ?>" alt="">
 
                 </div>
             <?php endforeach; ?>

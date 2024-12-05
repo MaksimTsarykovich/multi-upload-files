@@ -7,7 +7,7 @@ if (!($_SERVER["REQUEST_METHOD"] == "POST")) {
     returnToHome();
 }
 
-isMethodPOST() ? returnToHome() : null;
+/*!isMethodPOST() ? returnToHome() : null;*/
 
 foreach ($_FILES["files"]["name"] as $key => $image) {
 
@@ -19,7 +19,7 @@ foreach ($_FILES["files"]["name"] as $key => $image) {
 
     $fileName = createUniqueName(2,$fileType);
 
-    if (!saveImage($fileName, $fileTmpName, $mysqli)) {
+    if (!saveImage($fileName, $fileTmpName)) {
         $_SESSION['error'] = "Ошибка при загрузки изображения";
     }
     if (!addToDatabase($fileName, $mysqli)){

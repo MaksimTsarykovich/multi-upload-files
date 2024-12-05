@@ -33,10 +33,12 @@ function isMethodPOST(): bool
     return true;
 }
 
-function saveImage($fileName, $fileTmpName, $mysqli): bool
+function saveImage($fileName, $fileTmpName): bool
 {
-    $upLoadDir = __DIR__ . '/public/uploads/';
+    $upLoadDir = 'E:\Soft\xampp\htdocs\Task\11file\public\uploads\\';
+    print_r($upLoadDir);
     $upLoadFile = $upLoadDir . basename($fileName);
+
     return move_uploaded_file($fileTmpName, $upLoadFile);
 }
 
@@ -55,7 +57,19 @@ function createUser($mysqli, $userName, $userEmail, $userPassword,): bool
 
 function loginUser($mysqli, $userEmail, $userPassword): bool
 {
+    $sql = "SELECT * FROM `users` WHERE `email` = '{$userEmail}'";
 
+    if (!$result = mysqli_query($mysqli, $sql)) {
+        $_SESSION['ValidationError'] = 'Пожалуйста введите корректный email или пароль';
+        return false;
+    }
+    $user =mysqli_fetch_all($result, MYSQLI_ASSOC);
+    print_r($user['password']);
+    if (!password_verify($userPassword, $user['password'])) {
+        $_SESSION['ValidationError'] = 'Пожалуйста введите корректный email или пароль';
+        return false;
+    }
+    return true;
 }
 
 function createUniqueName($nameLength, $fileType): string
@@ -85,7 +99,7 @@ function isEmailValid($email): bool
 
 function isPasswordValid($password): bool
 {
-    if (!strlen($password) <= 8) {
+    if (strlen($password) <= 8) {
         $_SESSION['ValidationError'] = 'Пароль должен быть не менее 8 символов';
         return false;
     }
@@ -116,13 +130,19 @@ function createSecurePassword($password): string
 
 #[NoReturn] function returnToHome(): void
 {
-    header("Location: /Task/11file/public/upload.php");
+    header("Location: /Task/11file/public/index.php");
     exit();
 }
 
 #[NoReturn] function returnToRegisterPage(): void
 {
     header("Location: /Task/11file/public/register.php");
+    exit();
+}
+
+#[NoReturn] function returnToLoginPage(): void
+{
+    header("Location: /Task/11file/public/login.php");
     exit();
 }
 

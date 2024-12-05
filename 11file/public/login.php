@@ -42,7 +42,7 @@
 <body>
 <div class="login-container">
     <h1>Вход</h1>
-    <form action="/login" method="POST">
+    <form action="../includes/login_user.php" method="POST">
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>

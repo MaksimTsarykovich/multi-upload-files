@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,9 +71,8 @@
             <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Повторите пароль" required>
         </div>
         <!-- Кнопка регистрации -->
-        <input type="submit"
-               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-               value="Отправить файл"/>
+
+        <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
         <!-- Ссылка на вход -->
         <div class="text-center mt-3">
             <p class="mb-0">Уже есть аккаунт? <a href="login.php" class="text-primary">Войти</a></p>
