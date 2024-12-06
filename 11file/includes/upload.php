@@ -4,10 +4,10 @@ require_once('functions.php');
 
 if (!($_SERVER["REQUEST_METHOD"] == "POST")) {
     $_SESSION['error'] = "Неверный HTTP метод";
-    returnToHome();
+    returnToHomePage();
 }
 
-/*!isMethodPOST() ? returnToHome() : null;*/
+/*!isMethodPOST() ? returnToHomePage() : null;*/
 
 foreach ($_FILES["files"]["name"] as $key => $image) {
 
@@ -15,7 +15,7 @@ foreach ($_FILES["files"]["name"] as $key => $image) {
     $fileSize = $_FILES["files"]["size"][$key];
     $fileType = $_FILES["files"]["type"][$key];
 
-    !isImageValid($fileSize, $fileType) ? returnToHome() :
+    !isImageValid($fileSize, $fileType) ? returnToHomePage() :
 
     $fileName = createUniqueName(2,$fileType);
 
@@ -27,4 +27,4 @@ foreach ($_FILES["files"]["name"] as $key => $image) {
     }
 }
 $_SESSION['success'] = "Изображения успешно загружены";
-returnToHome();
+returnToHomePage();

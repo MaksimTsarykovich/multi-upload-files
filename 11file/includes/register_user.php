@@ -12,8 +12,8 @@ if (!(isMethodPOST() &&
 
 
 
-createUser($mysqli, $_POST['name'], $_POST['email'], $_POST['password']) ? null : returnToHome();
+createUser($mysqli, $_POST['name'], $_POST['email'], $_POST['password']) ? null : returnToHomePage();
 
 $_SESSION['is_logged_in'] = true;
 
-returnToHome();
+returnToHomePage();

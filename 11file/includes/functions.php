@@ -63,9 +63,9 @@ function loginUser($mysqli, $userEmail, $userPassword): bool
         $_SESSION['ValidationError'] = 'Пожалуйста введите корректный email или пароль';
         return false;
     }
-    $user =mysqli_fetch_all($result, MYSQLI_ASSOC);
-    print_r($user['password']);
-    if (!password_verify($userPassword, $user['password'])) {
+    $user = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    print_r($user[0]['password']);
+    if (!password_verify($userPassword, $user[0]['password'])) {
         $_SESSION['ValidationError'] = 'Пожалуйста введите корректный email или пароль';
         return false;
     }
@@ -99,7 +99,7 @@ function isEmailValid($email): bool
 
 function isPasswordValid($password): bool
 {
-    if (strlen($password) <= 8) {
+    if (strlen($password) < 8) {
         $_SESSION['ValidationError'] = 'Пароль должен быть не менее 8 символов';
         return false;
     }
@@ -128,7 +128,7 @@ function createSecurePassword($password): string
     return password_hash($password, PASSWORD_DEFAULT);
 }
 
-#[NoReturn] function returnToHome(): void
+#[NoReturn] function returnToHomePage (): void
 {
     header("Location: /Task/11file/public/index.php");
     exit();

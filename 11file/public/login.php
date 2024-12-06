@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,44 +7,22 @@
     <title>Вход</title>
     <!-- Подключение Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://happyhaha.github.io/css/dist/style.min.css">
+    <link rel="stylesheet" href="../assets/style.css">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f8f9fa;
-        }
 
-        .login-container {
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .login-container .form-label {
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
 <div class="login-container">
     <h1>Вход</h1>
     <form action="../includes/login_user.php" method="POST">
-
+        <?php if (isset($_SESSION['ValidationError'])) {
+            echo '<div class=" mx-auto p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+     role="alert">' . $_SESSION['ValidationError'] . '</div>';
+            unset($_SESSION['ValidationError']);
+        }
+        ?>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
@@ -51,7 +30,8 @@
 
         <div class="mb-3">
             <label for="password" class="form-label">Пароль</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Введите ваш пароль" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Введите ваш пароль"
+                   required>
         </div>
 
         <div class="mb-3 text-end">

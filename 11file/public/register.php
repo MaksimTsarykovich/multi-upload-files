@@ -7,45 +7,16 @@
     <title>Регистрация</title>
     <!-- Подключение Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f8f9fa;
-        }
-
-        .register-container {
-            max-width: 500px;
-            width: 100%;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .register-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .register-container .form-label {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="https://happyhaha.github.io/css/dist/style.min.css">
+    <link rel="stylesheet" href="../assets/style.css">
+   
 </head>
 <body>
 <div class="register-container">
     <h1>Регистрация</h1>
     <form action="../includes/register_user.php" method="post">
         <?php if (isset($_SESSION['ValidationError'])) {
-            echo '<div class="w-[600px] mx-auto p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            echo '<div class="mx-auto p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
      role="alert">' . $_SESSION['ValidationError'] . '</div>';
             unset($_SESSION['ValidationError']);
         }
