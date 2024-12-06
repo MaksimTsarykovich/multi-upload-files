@@ -16,7 +16,7 @@
 <body>
 <div class="login-container">
     <h1>Вход</h1>
-    <form action="../includes/login_user.php" method="POST">
+    <form action="../includes/login_user.php" method="post">
         <?php if (isset($_SESSION['ValidationError'])) {
             echo '<div class=" mx-auto p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
      role="alert">' . $_SESSION['ValidationError'] . '</div>';
@@ -32,10 +32,6 @@
             <label for="password" class="form-label">Пароль</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Введите ваш пароль"
                    required>
-        </div>
-
-        <div class="mb-3 text-end">
-            <a href="/forgot-password" class="text-muted">Забыли пароль?</a>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Войти</button>
